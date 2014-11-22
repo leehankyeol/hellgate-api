@@ -21,9 +21,9 @@ class CreateRelationshipsTable extends Migration {
 			$table->foreign('student1_id')->references('id')->on('students');
 			$table->integer('student2_id')->unsigned();
 			$table->foreign('student2_id')->references('id')->on('students');
-			$table->integer('status')->default(0);
-			$table->integer('num_stickiness')->unsigned()->default(1);
-			$table->float('avg_stickiness')->default(0);
+			$table->integer('status');
+			$table->integer('num_stickiness')->unsigned();
+			$table->float('avg_stickiness');
 			$table->integer('tot_upvote')->unsigned()->default(0);
 			$table->integer('tot_downvote')->unsigned()->default(0);
 			$table->timestamp('start_date')->default(null)->nullable();

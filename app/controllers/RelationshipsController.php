@@ -60,36 +60,37 @@ class RelationshipsController extends \BaseController {
 		$relationship = Relationship::where("student1_id", '=', $student1->id)->where("student2_id", '=', $student2->id)->get()->first();
 
 		if (is_null($relationship)) {
-			Relationship::create(array(
-				"user_id"			=> Session::has("user_id")? Session::get("user_id"): 1,
-				"student1_id"		=> $student1->id,
-				"student2_id"		=> $student2->id,
-				"status"			=> $status,
-				"num_stickiness"	=> 1,
-				"avg_stickiness"	=> $stickiness,
-				"tot_upvote"		=> 0,
-				"tot_downvote"		=> 0
-			));
+			$relationship = new Relationship;
+			$relationship->user_id = Session::has("user_id")? Session::get("user_id"): 1;
+			$relationship->student1_id = $student1->id;
+			$relationship->student2_id = $student2->id;
+			$relationship->status = intval($status);
+			$relationship->num_stickiness = 1;
+			$relationship->avg_stickiness = floatval($stickiness);
+			$relationship->tot_upvote = 0;
+			$relationship->tot_downvote = 0;
+			$relationship->save();
 
-			Relationship::create(array(
-				"user_id"			=> Session::has("user_id")? Session::get("user_id"): 1,
-				"student1_id"		=> $student2->id,
-				"student2_id"		=> $student1->id,
-				"status"			=> $status,
-				"num_stickiness"	=> 1,
-				"avg_stickiness"	=> $stickiness,
-				"tot_upvote"		=> 0,
-				"tot_downvote"		=> 0
-			));
+			$relationship = new Relationship;
+			$relationship->user_id = Session::has("user_id")? Session::get("user_id"): 1;
+			$relationship->student1_id = $student2->id;
+			$relationship->student2_id = $student1->id;
+			$relationship->status = intval($status);
+			$relationship->num_stickiness = 1;
+			$relationship->avg_stickiness = floatval($stickiness);
+			$relationship->tot_upvote = 0;
+			$relationship->tot_downvote = 0;
+			$relationship->save();
+			
 		} else {
 			$relationship1 = Relationship::where("student1_id", '=', $student1->id)->where("student2_id", '=', $student2->id)->get()->first();
-			$relationship1->num_stickiness = $relationship1->num_stickiness + 1;
 			$relationship1->avg_stickiness = $this->calculateAvgStickiness($relationship1, $stickiness);
+			$relationship1->num_stickiness = $relationship1->num_stickiness;
 			$relationship1->status = $status;
 			$relationship1->save();
 			$relationship2 = Relationship::where("student1_id", '=', $student2->id)->where("student2_id", '=', $student1->id)->get()->first();
-			$relationship2->num_stickiness = $relationship2->num_stickiness + 1;
 			$relationship2->avg_stickiness = $this->calculateAvgStickiness($relationship2, $stickiness);
+			$relationship2->num_stickiness = $relationship2->num_stickiness;
 			$relationship2->status = $status;
 			$relationship2->save();
 		}
