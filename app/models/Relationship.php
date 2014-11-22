@@ -25,6 +25,14 @@ class Relationship extends Eloquent {
 		return $this->belongTo('User');
 	}
 
+	public function student1() {
+		return $this->belongTo('Student');
+	}
+
+	public function student2() {
+		return $this->belongTo('Student');
+	}
+
 	public function stickinessLog() {
 		return $this->hasMany('StickinessLog');
 	}
