@@ -16,7 +16,7 @@ class Relationship extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('student1_id', 'student2_id');
+	protected $hidden = array();
 
 	protected $fillable = array('user_id', 'student1_id', 'student2_id');
 

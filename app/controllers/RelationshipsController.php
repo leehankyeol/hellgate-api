@@ -11,9 +11,7 @@ class RelationshipsController extends \BaseController {
 	}
 
 	public function postGetGraph() {
-		$relationships = Relationship::with(
-			'student1', 'student2'
-		)->get();
+		$relationships = Relationship::get();
 		$students = Student::get();
 
 		$data = new stdClass();
