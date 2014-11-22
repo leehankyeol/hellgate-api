@@ -3,7 +3,9 @@
 class RelationshipsController extends \BaseController {
 
 	public function postGets($page = 1) {
-		$relationships = Relationship::skip(($page - 1) * parent::$RELATIONSHIPS_PER_PAGE)->take(parent::$RELATIONSHIPS_PER_PAGE)->get();
+		$relationships = Relationship::with(
+			'student1', 'student2'
+		)->skip(($page - 1) * parent::$RELATIONSHIPS_PER_PAGE)->take(parent::$RELATIONSHIPS_PER_PAGE)->get();
 
 		return $this->returnJson($relationships, true);
 	}

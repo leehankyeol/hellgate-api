@@ -16,21 +16,21 @@ class Relationship extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array();
+	protected $hidden = array('student1_id', 'student2_id');
 
 	use SoftDeletingTrait;
 	protected $dates = ['deleted_at'];
 
 	public function user() {
-		return $this->belongTo('User');
+		return $this->belongsTo('User');
 	}
 
 	public function student1() {
-		return $this->belongTo('Student');
+		return $this->belongsTo('Student');
 	}
 
 	public function student2() {
-		return $this->belongTo('Student');
+		return $this->belongsTo('Student');
 	}
 
 	public function stickinessLog() {
