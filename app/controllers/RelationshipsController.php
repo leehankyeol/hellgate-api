@@ -94,7 +94,7 @@ class RelationshipsController extends \BaseController {
 			$relationship2->save();
 		}
 
-		return $this->returnJson(null, true);	
+		return $this->returnJson(null, true);
 	}
 
 	/**
