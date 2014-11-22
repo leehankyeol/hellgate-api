@@ -27,4 +27,8 @@ class BaseController extends Controller {
 		return Response::json($response);
 	}
 
+	public function calculateAvgStickiness($relationship, $stickiness) {
+		return ($relationship->num_stickiness * $relationship->avg_stickiness + $stickiness) / ($relationship->num_stickiness + 1) ;
+	}
+
 }

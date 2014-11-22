@@ -18,6 +18,8 @@ class Relationship extends Eloquent {
 	 */
 	protected $hidden = array('student1_id', 'student2_id');
 
+	protected $fillable = array('user_id', 'student1_id', 'student2_id');
+
 	use SoftDeletingTrait;
 	protected $dates = ['deleted_at'];
 

@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration {
 			$table->string('sex');
 			$table->string('enter_year');
 			$table->string('major');
-			$table->boolean('married');
+			$table->boolean('married')->default(false);
 
 			$table->timestamps();
 			$table->softDeletes();
