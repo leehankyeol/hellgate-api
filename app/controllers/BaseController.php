@@ -15,4 +15,14 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function returnJson($data, $success, $error = null) {
+		$response = new stdClass();
+
+		$response->data = $object;
+		$response->success = $success;
+		$response->error = $error;
+
+		return Response::json($response);
+	}
+
 }

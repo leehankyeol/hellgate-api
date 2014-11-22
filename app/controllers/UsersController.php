@@ -2,6 +2,25 @@
 
 class UsersController extends \BaseController {
 
+	public function postAuthenticate() {
+		$device_id = Input::get("device_id");
+		$user = User::where("device_id", '=', $device_id)->get()->first();
+
+		if (is_null($device_id)) {
+			return returnJson(null, false, "no device id");
+		}
+
+		if (is_null($user)) {
+			$user = new User;
+			$user->device_id = $device_id;
+			$user->save();
+
+		}
+		
+		Session::put('user_id', $user->id);
+		return returnJson($user, true);
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -19,17 +38,6 @@ class UsersController extends \BaseController {
 	 * @return Response
 	 */
 	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
 	{
 		//
 	}
