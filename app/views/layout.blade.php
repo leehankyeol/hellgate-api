@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>Hellgate</title>
 
-		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="icon" type="image/png" href="/favicon.png" />
 
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/pure/0.5.0/pure-min.css">
 		<link rel="stylesheet" href="/css/marketing.css">
