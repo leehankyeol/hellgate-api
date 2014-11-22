@@ -7,7 +7,7 @@ class UsersController extends \BaseController {
 		$user = User::where("device_id", '=', $device_id)->get()->first();
 
 		if (is_null($device_id)) {
-			return returnJson(null, false, "no device id");
+			return $this->returnJson(null, false, "no device id");
 		}
 
 		if (is_null($user)) {
@@ -18,7 +18,7 @@ class UsersController extends \BaseController {
 		}
 		
 		Session::put('user_id', $user->id);
-		return returnJson($user, true);
+		return $this->returnJson($user, true);
 	}
 
 	/**
