@@ -2,6 +2,8 @@
 
 class BaseController extends Controller {
 
+	public static $RELATIONSHIPS_PER_PAGE = 20;
+
 	/**
 	 * Setup the layout used by the controller.
 	 *
