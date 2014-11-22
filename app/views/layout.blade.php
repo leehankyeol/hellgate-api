@@ -9,8 +9,20 @@
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/pure/0.5.0/pure-min.css">
+		<link rel="stylesheet" href="/css/marketing.css">
 	</head>
 	<body>
+
+		<div class="header">
+			<div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+				<a class="pure-menu-heading" href="">Hellgate</a>
+
+				<ul>
+					<li class="pure-menu-selected"><a href="#">Info</a></li>
+				</ul>
+			</div>
+		</div>
+
 		<section id="content">
 			@yield('content')
 		</section>
