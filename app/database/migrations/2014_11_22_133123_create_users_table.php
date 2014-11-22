@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->string('device_id')->unique()->index();
 			$table->string('push_token')->nullable()->default(null);
+			$table->integer('point')->unsigned()->default(100);
 
 			$table->timestamps();
 			$table->softDeletes();
