@@ -24,6 +24,8 @@ label {
     color: #fff;
 }
 
+h2.grey {color: #7f8c8d;}
+
 .pure-img-responsive {
     max-width: 100%;
     height: auto;

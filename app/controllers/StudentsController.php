@@ -2,85 +2,30 @@
 
 class StudentsController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
+	public function postUpdate() {
+		$name = Input::get('name');
+		$sex = Input::get('sex');
+		$enter_year = Input::get('enter_year');
+		$major = Input::get('major');
+
+		$user = User::find(Session::has("user_id")? Session::get("user_id"): 1);
+
+		if ($user->point < 100) {
+			return $this->returnJson(null, false, 'not enough point');
+		}
+
+		$student = Student::where("name", '=', $name)->where("sex", '=', $sex)->where("enter_year", '=', $enter_year)->where("major", '=', $major)->get()->first();
+
+		if (is_null($student)) {
+			return $this->returnJson(null, false, 'no student');
+		}
+
+		Relationship::where("student1_id", '=', $student->id)->delete();
+		Relationship::where("student2_id", '=', $student->id)->delete();
+
+		$user->point = $user->point - 100;
+		$user->save();
+
+		return Redirect::to('users/show/'.$user->id);
 	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-
 }

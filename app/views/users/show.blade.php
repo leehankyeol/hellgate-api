@@ -2,7 +2,7 @@
 
 <div class="splash-container">
 	<div class="splash">
-		<h1 class="splash-head">{{{ ($user->device_id) }}}</h1>
+		<h1 class="splash-head">{{{ substr($user->device_id, 0, 10) }}}</h1>
 		<p class="splash-subhead">
 			Welcome to Hellgate.
 		</p>
@@ -14,7 +14,7 @@
 
 <div class="content-wrapper">
 	<div class="content">
-		<h2 class="content-head is-center">Your karma to remove pasts.</h2>
+		<h2 class="content-head is-center grey">Your karma to remove pasts.</h2>
 
 		<div class="pure-g">
 			<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
@@ -34,11 +34,11 @@
 
 		<div class="pure-g">
 			<div class="l-box-lrg pure-u-1 pure-u-md-2-5">
-				<form class="pure-form pure-form-stacked">
+				<form class="pure-form pure-form-stacked" method="post" action="/students/update">
 					<fieldset>
 
 						<label for="name">Name</label>
-						<input id="name" type="text" placeholder="Name">
+						<input id="name" name="name" type="text" placeholder="Name">
 
 						<label for="sex">Sex</label>
 						<select id="sex" name="sex" class="pure-input-1-2">
@@ -47,7 +47,7 @@
 						</select>
 
 						<label for="enter_year">Enter Year</label>
-						<input id="enter_year" placeholder="Enter Year">
+						<input id="enter_year" name="enter_year" placeholder="Enter Year">
 
 						<label for="major">Major</label>
 						<select id="major" name="major" class="pure-input-1-2">
