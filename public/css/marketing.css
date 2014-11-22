@@ -21,7 +21,7 @@ h4,
 h5,
 h6,
 label {
-    color: #34495e;
+    color: #fff;
 }
 
 .pure-img-responsive {
@@ -71,7 +71,7 @@ label {
  * I want my pure-button elements to look a little different
  */
 .pure-button {
-    background-color: #1f8dd6;
+    background-color: #9F9FA0;
     color: white;
     padding: 0.5em 2em;
     border-radius: 5px;
@@ -96,7 +96,7 @@ a.pure-button-primary {
     box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
 }
 .home-menu.pure-menu-open {
-    background: #2d3e50;
+    background: #E95D78;
 }
 .pure-menu.pure-menu-open.pure-menu-fixed {
     /* Fixed menus normally have a border at the bottom. */
@@ -132,7 +132,7 @@ a.pure-button-primary {
  */
 
 .splash-container {
-    background: #1f8dd6;
+    background: #EED7BB;
     z-index: 1;
     overflow: hidden;
     /* The following styles are required for the "scroll-over" effect */
@@ -158,8 +158,8 @@ a.pure-button-primary {
 .splash-head {
     font-size: 20px;
     font-weight: bold;
-    color: white;
-    border: 3px solid white;
+    color: #E95D78;
+    border: 3px solid #E95D78;
     padding: 1em 1.6em;
     font-weight: 100;
     border-radius: 5px;
@@ -168,7 +168,7 @@ a.pure-button-primary {
 
 /* This is the subheading that appears on the blue section */
 .splash-subhead {
-    color: white;
+    color: #E95D78;
     letter-spacing: 0.05em;
     opacity: 0.8;
 }
@@ -203,7 +203,7 @@ a.pure-button-primary {
 
 /* This is the class used for the content sub-headers (<h3>) */
 .content-subhead {
-    color: #1f8dd6;
+    color: #7D9BA3;
 }
     .content-subhead i {
         margin-right: 7px;
@@ -211,7 +211,7 @@ a.pure-button-primary {
 
 /* This is the class used for the dark-background areas. */
 .ribbon {
-    background: #2d3e50;
+    background: #7D9BA3;
     color: #aaa;
 }
 
