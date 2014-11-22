@@ -5,13 +5,13 @@ class RelationshipsController extends \BaseController {
 	public function postGets($page = 1) {
 		$relationships = Relationship::with(
 			'student1', 'student2'
-		)->skip(($page - 1) * parent::$RELATIONSHIPS_PER_PAGE)->take(parent::$RELATIONSHIPS_PER_PAGE)->get();
+		)->whereRaw("id % 2 = 0")->skip(($page - 1) * parent::$RELATIONSHIPS_PER_PAGE)->take(parent::$RELATIONSHIPS_PER_PAGE)->get();
 
 		return $this->returnJson($relationships, true);
 	}
 
 	public function postGetGraph() {
-		$relationships = Relationship::get();
+		$relationships = Relationship::whereRaw("id % 2 = 0")->get();
 		$students = Student::get();
 
 		$data = new stdClass();
@@ -81,7 +81,7 @@ class RelationshipsController extends \BaseController {
 			$relationship->tot_upvote = 0;
 			$relationship->tot_downvote = 0;
 			$relationship->save();
-			
+
 		} else {
 			$relationship1 = Relationship::where("student1_id", '=', $student1->id)->where("student2_id", '=', $student2->id)->get()->first();
 			$relationship1->avg_stickiness = $this->calculateAvgStickiness($relationship1, $stickiness);
