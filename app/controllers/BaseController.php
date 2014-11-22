@@ -18,7 +18,7 @@ class BaseController extends Controller {
 	public function returnJson($data, $success, $error = null) {
 		$response = new stdClass();
 
-		$response->data = $object;
+		$response->data = $data;
 		$response->success = $success;
 		$response->error = $error;
 
