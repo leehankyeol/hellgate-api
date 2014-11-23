@@ -19,27 +19,29 @@
 		<div class="pure-g">
 			<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
 				<h3 class="content-subhead">
-				Currently
+				현재
 				<?php $isSolo = true; ?>
 					@foreach ($relationships as $relationship)
 						@if ($relationship->status == 2)
-							On relationship
+							연애 중
 							<?php $isSolo = false; ?>
 						@elseif ($relationship->status == 3)
-							Married
+							결혼함
 							<?php $isSolo = false; ?>
 						@endif
 					@endforeach
 					@if ($isSolo)
-						Solo
+						솔
 					@endif
 				</h3>
-				<table class="pure-table" style="margin: 0 auto;">
+				<table class="pure-table pure-table-horizontal" style="margin: 0 auto;">
 					<thead>
 						<tr>
-							<th>Female</th>
-							<th>Male</th>
-							<th>Status</th>
+							<th>여자</th>
+							<th>남자</th>
+							<th>상태</th>
+							<th>끈끈함</th>
+							<th>신뢰도</th>
 						</tr>
 					</thead>
 
@@ -51,18 +53,18 @@
 									{{{ $relationship->student2->name }}}
 
 									@if ($relationship->student2->married)
-										(현재 기혼)
+										<br>(기혼)
 									@else
-										(현재 미혼)
+										<br>(미혼)
 									@endif
 
 								@else
 									{{{ $relationship->student1->name }}}
 
 									@if ($relationship->student1->married)
-										(현재 기혼)
+										<br>(기혼)
 									@else
-										(현재 미혼)
+										<br>(미혼)
 									@endif
 
 								@endif
@@ -72,18 +74,18 @@
 									{{{ $relationship->student1->name }}}
 
 									@if ($relationship->student1->married)
-										(현재 기혼)
+										<br>(기혼)
 									@else
-										(현재 미혼)
+										<br>(미혼)
 									@endif
 
 								@else
 									{{{ $relationship->student2->name }}}
 
 									@if ($relationship->student2->married)
-										(현재 기혼)
+										<br>(기혼)
 									@else
-										(현재 미혼)
+										<br>(미혼)
 									@endif
 
 								@endif
@@ -97,11 +99,23 @@
 									결혼
 								@endif
 							</td>
+							<td>
+							{{{ number_format($relationship->avg_stickiness, 1) }}} / 5.0
+							</td>
+							<td>
+							@if ($relationship->tot_upvote - $relationship->tot_downvote > 0)
+							높음
+							@elseif ($relationship->tot_upvote - $relationship->tot_downvote == 0)
+							보통
+							@else
+							낮음
+							@endif
+							</td>
 						</tr>
 						@if (count($relationship->comments))
 							@foreach ($relationship->comments as $comment)
 							<tr>
-								<td colspan="3">
+								<td colspan="5">
 									
 										{{{ $comment->description }}}
 									
