@@ -15,7 +15,7 @@
 
 		<div class="header">
 			<div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-				<a class="pure-menu-heading" href="">Hellgate</a>
+				<a class="pure-menu-heading" href="/students/find">Hellgate</a>
 
 				<ul>
 					<li class="pure-menu-selected"><a href="#">Info</a></li>
