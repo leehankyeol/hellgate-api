@@ -43,7 +43,7 @@ class Relationship extends Eloquent {
 		return $this->hasMany('VoteLog');
 	}
 
-	public function comment() {
+	public function comments() {
 		return $this->hasMany('Comment');
 	}
 }

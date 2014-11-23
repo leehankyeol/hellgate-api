@@ -39,6 +39,7 @@
 						<tr>
 							<th>Female</th>
 							<th>Male</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 
@@ -48,18 +49,66 @@
 							<td>
 								@if ($relationship->student1->sex == 'm')
 									{{{ $relationship->student2->name }}}
+
+									@if ($relationship->student2->married)
+										(현재 기혼)
+									@else
+										(현재 미혼)
+									@endif
+
 								@else
 									{{{ $relationship->student1->name }}}
+
+									@if ($relationship->student1->married)
+										(현재 기혼)
+									@else
+										(현재 미혼)
+									@endif
+
 								@endif
 							</td>
 							<td>
 								@if ($relationship->student1->sex == 'm')
 									{{{ $relationship->student1->name }}}
+
+									@if ($relationship->student1->married)
+										(현재 기혼)
+									@else
+										(현재 미혼)
+									@endif
+
 								@else
 									{{{ $relationship->student2->name }}}
+
+									@if ($relationship->student2->married)
+										(현재 기혼)
+									@else
+										(현재 미혼)
+									@endif
+
+								@endif
+							</td>
+							<td>
+								@if ($relationship->status == 1)
+									이별
+								@elseif ($relationship->status == 2)
+									연애 중
+								@else ($relationship->status == 3)
+									결혼
 								@endif
 							</td>
 						</tr>
+						@if (count($relationship->comments))
+							@foreach ($relationship->comments as $comment)
+							<tr>
+								<td colspan="3">
+									
+										{{{ $comment->description }}}
+									
+								</td>
+							</tr>
+							@endforeach
+						@endif
 						@endforeach
 					</tbody>
 				</table>
