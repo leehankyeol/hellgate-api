@@ -29,6 +29,28 @@ class StudentsController extends \BaseController {
 		$this->layout->content = View::make('students.show');		
 	}
 
+	public function postShow() {
+		$name = Input::get('name');
+		$sex = Input::get('sex');
+		$enter_year = Input::get('enter_year');
+		$major = Input::get('major');
+
+		$student = Student::where("name", 'LIKE', "%$name%")->where("sex", '=', $sex)->where("enter_year", '=', $enter_year)->where("major", 'LIKE', "%$major%")->get()->first();
+
+		if (is_null($student)) {
+			return $this->returnJson(null, false, 'no student');
+		}
+
+		$relationships = Relationship::with(
+			"student1", "student2"
+		)->where("student1_id", '=', $student->id)->get();
+
+		View::share('student', $student);
+		View::share('relationships', $relationships);
+		$this->layout = View::make('layout');
+		$this->layout->content = View::make('students.show');		
+	}
+
 	public function postUpdate() {
 		$name = Input::get('name');
 		$sex = Input::get('sex');

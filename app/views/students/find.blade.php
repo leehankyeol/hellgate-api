@@ -15,7 +15,7 @@
 
 		<div class="pure-g">
 			<div class="l-box-lrg pure-u-1 pure-u-md-2-5">
-				<form class="pure-form pure-form-stacked" method="get" action="/students/show">
+				<form class="pure-form pure-form-stacked" method="post" action="/students/show">
 					<fieldset>
 
 						<label for="name">Name</label>
