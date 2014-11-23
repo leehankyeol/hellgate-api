@@ -5,7 +5,7 @@ class RelationshipsController extends \BaseController {
 	public function postGets($page = 1) {
 		$relationships = Relationship::with(
 			'student1', 'student2'
-		)->whereRaw("id % 2 = 0")->skip(($page - 1) * parent::$RELATIONSHIPS_PER_PAGE)->take(parent::$RELATIONSHIPS_PER_PAGE)->orderBy("created_at", "desc")->get();
+		)->whereRaw("id % 2 = 0")->skip(($page - 1) * parent::$RELATIONSHIPS_PER_PAGE)->take(parent::$RELATIONSHIPS_PER_PAGE)->orderBy("id", "desc")->get();
 
 		return $this->returnJson($relationships, true);
 	}

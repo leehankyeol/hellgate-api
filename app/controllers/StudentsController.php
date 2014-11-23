@@ -13,7 +13,7 @@ class StudentsController extends \BaseController {
 		$enter_year = Input::get('enter_year');
 		$major = Input::get('major');
 
-		$student = Student::where("name", '=', $name)->where("sex", '=', $sex)->where("enter_year", '=', $enter_year)->where("major", '=', $major)->get()->first();
+		$student = Student::where("name", 'LIKE', "%$name%")->where("sex", '=', $sex)->where("enter_year", '=', $enter_year)->where("major", 'LIKE', "%$major%")->get()->first();
 
 		if (is_null($student)) {
 			return $this->returnJson(null, false, 'no student');
